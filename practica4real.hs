@@ -19,12 +19,10 @@ parteEntera  x  | x >= 0 && x < 1 = 0
 esDivisible :: Int -> Int -> Bool
 
 esDivisible x y | x < y = False
-                | 
 
 
 -- 7)
 
 todosDigitosIguales :: Int -> Bool
-
 todosDigitosIguales x   | x < 10 = True
                         | otherwise = (((x `mod` 10) == (x `div` 10)) && (todosDigitosIguales (x `div` 10)))

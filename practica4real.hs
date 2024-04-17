@@ -131,8 +131,17 @@ menorDivisor :: Int -> Int
 menorDivisor 1 = 1
 menorDivisor n = menorDivisorDesde n 2
 
--- 16) d)
+-- 16) b)
 
+esPrimo :: Int -> Bool
+esPrimo n   | menorDivisor n == n = True
+            | otherwise = False
+
+
+-- 16) c)
+
+sonCoprimos :: Int -> Int -> Bool
+sonCoprimos n m | esPrimo n && esPrimo m = True
 
 -- 19)
 

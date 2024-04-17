@@ -16,7 +16,7 @@ parteEntera  x  | x >= 0 && x < 1 = 0
                 | x < 0 = parteEntera (x + 1) - 1
                 | otherwise = parteEntera (x - 1) + 1
 
--- 3)s
+-- 3)
 
 esDivisible :: Int -> Int -> Bool
 
@@ -58,6 +58,8 @@ cantDigitos n | n < 10 = 1
               where sacarUltimo n = div n 10
 
 --sacarPrimerDigito :: Int -> Int. Podría agarrar la cantidad de dígitos de N y multiplicarlo por el primer dígito, es decir, que te quede ponele 454 - 400 = 54, entonces estás sacando el primer dígito
+sacarPrimerDigito :: Int -> Int
+sacarPrimerDigito x = x - ((iesimoDigito x 1) * 10^(cantDigitos(x) - 1))
 
 -- 6)
 
@@ -87,4 +89,52 @@ iesimoDigito n i    | cantDigitos(n) == i = ultimoDigito(n)
 esCapicua :: Int -> Bool
 
 esCapicua  n    | n < 10 = True
-                | n >= 10 && n <= 99 = (sacarUnidades(n) == ultimoDigito(n))
+                | n >= 10 && n <= 99 = ((iesimoDigito n 1) == ultimoDigito(n))
+                | otherwise = (esCapicua(sacarPrimerDigito(sacarUnidades(n))) && ((iesimoDigito n 1) == ultimoDigito(n)))
+
+-- 10) a)
+
+sumatoriaf1 :: Int -> Int
+
+sumatoriaf1 n   | n == 0 = 1
+                | otherwise = sumatoriaf1(n - 1) + 2^n
+
+-- 10) b)
+
+sumatoriaf2 :: Int -> Int -> Int
+
+sumatoriaf2 n q | n == 1 = q
+                | otherwise = (sumatoriaf2 (n - 1) q) + q^n
+
+-- 10) c)
+
+--sumatoriaf3 :: Int -> Int
+
+--sumatoriaf3 n q | n == 1 = q
+
+
+-- 13) 
+
+--dobleSumatoriaDePotencias :: Int -> Int -> Int
+
+
+-- 16) a)
+
+menorDivisorDesde :: Int -> Int -> Int
+
+menorDivisorDesde n m   | mod n m == 0 = m
+                        | otherwise = menorDivisorDesde n (m + 1)
+
+
+menorDivisor :: Int -> Int
+
+menorDivisor 1 = 1
+menorDivisor n = menorDivisorDesde n 2
+
+-- 16) d)
+
+
+-- 19)
+
+
+

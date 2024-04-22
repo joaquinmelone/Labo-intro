@@ -13,8 +13,8 @@ longitud :: [t] -> Int
 longitud [] = 0
 longitud (x:xs) = 1 + longitud xs
 
-
--- 2. aasd
+ 
+-- 2. aasd asd
 
 ultimo :: [t] -> t
 

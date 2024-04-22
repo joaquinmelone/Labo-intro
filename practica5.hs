@@ -172,5 +172,6 @@ sumarN n lista  | longitud lista == 0 = []
 ordenar :: [Integer] -> [Integer]
 
 ordenar lista   | longitud lista == 0 = []
+                | otherwise = ordenar (quitar (maximo lista) lista) ++ [maximo lista]
                                     
 

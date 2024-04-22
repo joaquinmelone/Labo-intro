@@ -14,7 +14,7 @@ longitud [] = 0
 longitud (x:xs) = 1 + longitud xs
 
  
--- 2. aasd asd
+-- 2.
 
 ultimo :: [t] -> t
 
@@ -48,7 +48,7 @@ reverso x   | longitud x == 1 = x
 
 -- 1.
 
--- Qué es (Eq t)? Y cómo funciona?
+-- (Eq t) significa que tiene definido la operación igual, o sea, el tipo "t" que entra en la función tiene que poder compararse. Ej: naturales, enteros, reales, booleanos, etc.
 pertenece :: (Eq t) => t -> [t] -> Bool
 
 pertenece elemento lista    | longitud lista == 0 = False
@@ -76,7 +76,7 @@ todosDistintos lista    | longitud lista == 0 || longitud lista == 1 = True
 
 hayRepetidos :: (Eq t) => [t] -> Bool
 
-hayRepetidos lista  | longitud lista == 0 || longitud lista == 1 = False
+hayRepetidos lista  | longitud lista == 0 = False
                     | pertenece (head lista) (tail lista) = True
                     | otherwise = hayRepetidos (tail lista)
 
@@ -135,3 +135,42 @@ capicua lista   | longitud lista == 0 = True
                 | longitud lista == 1 = True
                 | head lista == ultimo lista = capicua (removerUltimo (tail lista))
                 | otherwise = False
+
+-- Ejercicio 3.
+
+-- 1.
+
+sumatoria :: [Integer] -> Integer
+
+sumatoria lista | longitud lista == 0 = 0
+                | otherwise = head lista + sumatoria (tail lista)
+
+-- 2.
+
+productoria :: [Integer] -> Integer
+
+productoria lista   | longitud lista == 0 = 1
+                    | otherwise = head lista * productoria (tail lista)
+
+-- 3.
+
+maximo :: [Integer] -> Integer
+
+maximo lista    | longitud lista == 0 = 0
+                | head lista >= maximo (tail lista) = head lista
+                | otherwise = maximo (tail lista)
+
+-- 4.
+
+sumarN :: Integer -> [Integer] -> [Integer]
+
+sumarN n lista  | longitud lista == 0 = []
+                | otherwise = (head lista + n) : sumarN n (tail lista)
+
+-- 9.
+
+ordenar :: [Integer] -> [Integer]
+
+ordenar lista   | longitud lista == 0 = []
+                                    
+

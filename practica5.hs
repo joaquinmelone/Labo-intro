@@ -15,7 +15,7 @@ longitud [] = 0
 longitud (x:xs) = 1 + longitud xs
 
 
--- 2.
+-- 2. a
 
 ultimo :: [t] -> t
 

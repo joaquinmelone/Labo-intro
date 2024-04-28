@@ -1,11 +1,12 @@
--- Ejercicio 1
-
--- 1.
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# HLINT ignore "Use foldr" #-}
 {-# HLINT ignore "Redundant bracket" #-}
 {-# HLINT ignore "Use even" #-}
+import Practica4real
 
+-- Ejercicio 1
+
+-- 1.
 -- Cómo funciona x:xs, por qué x es el primer elemento de la lista que mandes y xs es el resto, si por ejemplo en ghci yo escribo [4,5] : []
 -- la devolución es [[4,5]], por qué en este caso se comporta como si fuera un head y un tail, y no simplemente como un constructor de listas
 
@@ -246,11 +247,12 @@ sacarBlancosRepetidosInicioFinal lista  | longitud lista == 0 = []
 
 
 --Por qué cuando devuelvo [[Char]] en ghci aparece ["hola"] (si por ejemplo tendría que aparecer [["hola"]])
+--No sé como devolver una lista de Char adentro de otra lista, a partir de una lista de Char
 palabras :: [Char] -> [[Char]]
 
 palabras lista  | longitud lista == 0 = []
                 | (head (sacarBlancoInicioFinal (sacarBlancosRepetidos (lista)))) == ' ' = []
-                | otherwise = [head (sacarBlancosRepetidosInicioFinal lista), 'a'] : palabras (tail (sacarBlancosRepetidosInicioFinal lista))
+                | otherwise = [head (sacarBlancosRepetidosInicioFinal lista)] : palabras (tail (sacarBlancosRepetidosInicioFinal lista))
 
 -- d)
 
@@ -285,7 +287,32 @@ aplanarConNBlancos lista n  | longitud lista == 0 = []
                             | longitud lista > 1 = head lista ++ nBlancos n ++ aplanarConNBlancos (tail lista) n
                             | otherwise = head lista ++ aplanarConNBlancos (tail lista) n
 
-addVal :: Int -> [Int] -> [[Int]]
+-- Ejercicio 5
 
-addVal i [] = []
-addVal i (x:xs) =  [i,x] : addVal i xs
+-- 1.
+
+--Función auxiliar
+sumarLista :: (Num t) => [t] -> t
+
+sumarLista lista    | longitud lista == 0 = 0 
+                    | otherwise = head lista + sumarLista (tail lista)
+
+sumaAcumulada :: (Num t) => [t] -> [t]
+
+sumaAcumulada lista | longitud lista == 0 = []
+                    | otherwise = sumaAcumulada (removerUltimo lista) ++ [sumarLista lista]
+
+-- 2.
+
+--Función auxiliar
+factorizacionEnPrimos :: Int -> [Int]
+
+factorizacionEnPrimos n | n < 2 = []
+                        | otherwise = (menorDivisor n) : factorizacionEnPrimos (div n (menorDivisor n))
+
+
+
+descomponerEnPrimos :: [Int] -> [[Int]]
+
+descomponerEnPrimos lista   | longitud lista == 0 = []
+                            | otherwise = factorizacionEnPrimos(head lista) : descomponerEnPrimos (tail lista)

@@ -2,7 +2,9 @@
 {-# HLINT ignore "Use foldr" #-}
 {-# HLINT ignore "Redundant bracket" #-}
 {-# HLINT ignore "Use even" #-}
+module Practica5 where
 import Practica4real
+import Test.HUnit
 
 -- Ejercicio 1
 

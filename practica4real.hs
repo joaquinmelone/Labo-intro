@@ -1,8 +1,9 @@
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+{-# HLINT ignore "Redundant bracket" #-}
 module Practica4real where
 
 -- 1)
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-{-# HLINT ignore "Redundant bracket" #-}
 fibonacci :: Int -> Int
 
 fibonacci   n | n == 0 = 0
@@ -145,7 +146,9 @@ esPrimo n   | menorDivisor n == n = True
 sonCoprimos :: Int -> Int -> Bool
 sonCoprimos n m | esPrimo n && esPrimo m = True
 
--- 19)
+-- TESTEO CON HUNIT
 
+foo :: Int -> Int
+foo x = x + 1
 
 

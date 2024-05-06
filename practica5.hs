@@ -262,7 +262,7 @@ palabraMasLarga :: [Char] -> [Char]
 
 palabraMasLarga lista   | longitud lista == 0 = []
 
--- e)
+-- e)a
 
 aplanar :: [[Char]] -> [Char]
 

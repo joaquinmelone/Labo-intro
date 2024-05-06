@@ -41,7 +41,7 @@ laQueMasHayQueCodificar (x1:x2:xs) ((y,z):zs)   | cuantasVecesPertenece (head(sa
                                                 | otherwise = laQueMasHayQueCodificar (sacarRepetidos((x1:xs))) ((y,z):zs)
 
 
--- Ejercicio 4
+-- Ejercicio 4 a
 
 --Función auxiliar
 devuelveSegundaPosicion :: Char -> [(Char, Char)] -> Char

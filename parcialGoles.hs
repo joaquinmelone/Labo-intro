@@ -49,7 +49,7 @@ porcentajeDeGoles :: String -> [(String, String)] -> [Int] -> Float
 porcentajeDeGoles arq ((x,y):xs) goles  | pertenece (arq) (aplanar [(x,y)]) = division ((iesimaPosicion (longitud ((x,y):xs)) goles) * 100) (sumarLista(goles))
                                         | otherwise = porcentajeDeGoles arq xs goles
 
--- Ejercicio 4
+-- Ejercicio 4 a
 
 --Función auxiliar
 minimoLista :: [Int] -> Int

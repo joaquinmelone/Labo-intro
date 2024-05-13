@@ -14,13 +14,28 @@ import Data.Char
 -- Integrantes que abandonaron la materia: {En caso que haya abandonado la materia algún
                         -- integrante, completar con los dni y apellidos, sino dejar vacío}
 
+--Función auxiliar
+pertenece :: (Eq t) => t -> [t] -> Bool
+pertenece _ [] = False
+pertenece elemento (x:xs)   | elemento == x = True
+                            | otherwise = pertenece elemento xs
+
+--Abecedario
+abecedario = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+
 -- EJ 1
 esMinuscula :: Char -> Bool
-esMinuscula _ = True
+esMinuscula c = pertenece c abecedario
 
 -- EJ 2
 letraANatural :: Char -> Int
-letraANatural _ = 1
+letraANatural letra = posicionLista letra abecedario
+
+--Función auxiliar
+posicionLista :: (Eq t) => t -> [t] -> Int
+posicionLista _ [] = 0
+posicionLista elemento (x:xs)   | elemento == x = 0
+                                | otherwise = posicionLista elemento xs + 1
 
 -- EJ 3
 desplazar :: Char -> Int -> Char
@@ -29,6 +44,8 @@ desplazar _ _ = 'd'
 -- EJ 4
 cifrar :: String -> Int -> String
 cifrar _ _ = "frpsxwdflrq"
+
+
 
 -- EJ 5
 descifrar :: String -> Int -> String
